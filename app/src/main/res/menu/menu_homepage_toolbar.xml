@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/alarm"
+        android:title="@string/notification"
+        android:icon="@mipmap/ic_notifications_white_24dp"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/read_model"
+        android:title="?attr/readModelText"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/setting"
+        android:title="@string/setting"
+        app:showAsAction="never"
+        />
+
+</menu>

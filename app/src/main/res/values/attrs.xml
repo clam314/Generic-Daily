@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="toolbarColor" format="color"/>
+    <attr name="textColorLight" format="color"/>
+    <attr name="textColorDark" format="color"/>
+    <attr name="listItemReaded" format="color|reference"/>
+    <attr name="listItemColor" format="color|reference"/>
+    <attr name="backgroundColor" format="color|reference"/>
+    <attr name="readModelText" format="string"/>
+    <attr name="drawer_hp_color" format="color|reference"/>
+    <attr name="textColor_dr_lv" format="color|reference"/>
+    <attr name="recycleViewColor" format="color|reference"/>
+    <attr name="cardViewColor" format="color|reference"/>
+
+</resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_rcv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:visibility="visible"
+        style="@style/tv_rcv_date"
+        />
+    <android.support.v7.widget.CardView
+        android:id="@+id/cv_rcv_item"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardBackgroundColor="?attr/cardViewColor"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="5dp"
+        app:contentPadding="10dp"
+        >
+
+
+            <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/iv_rcv_item_home"
+                android:layout_width="90dp"
+                android:layout_height="75dp"
+                android:layout_gravity="right"
+                android:scaleType="centerCrop"
+                android:background="@color/black"
+                />
+
+            <TextView
+                android:id="@+id/tv_rcv_multipic"
+                android:drawableStart="@drawable/icon_filter_none_white"
+                android:layout_width="45sp"
+                android:layout_height="20sp"
+                android:layout_gravity="right|bottom"
+                android:background="#95000000"
+                style="@style/tv_rcv_item_multipic"
+                />
+
+            <TextView
+                android:id="@+id/tv_rcv_item"
+                android:layout_width="240dp"
+                android:layout_height="match_parent"
+                android:text="111111111111111111111111111111111111"
+                style="@style/tv_rcv_item"
+               />
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>

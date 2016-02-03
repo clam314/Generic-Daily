@@ -1,0 +1,36 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="MyAppTheme_light" parent="AppTheme">
+        <item name="toolbarColor">@color/blue</item>
+        <item name="textColorLight">@color/white</item>
+        <item name="textColorDark" >@color/black</item>
+        <item name="listItemReaded">@color/gray_light</item>
+        <item name="listItemColor">@color/white</item>
+        <item name="backgroundColor">@color/white</item>
+        <item name="readModelText">@string/read_model_dark</item>
+        <item name="drawer_hp_color">@color/white_dark</item>
+        <item name="textColor_dr_lv">@color/black</item>
+        <item name="recycleViewColor">@color/white</item>
+        <item name="cardViewColor">@color/white_gray</item>
+    </style>
+
+    <style name="MyAppTheme_Dark" parent="AppTheme">
+        <item name="toolbarColor">@color/gray_dark</item>
+        <item name="textColorLight">@color/gray_light</item>
+        <item name="textColorDark" >@color/white</item>
+        <item name="listItemReaded">@color/gray_light</item>
+        <item name="listItemColor">@color/gray</item>
+        <item name="backgroundColor">@color/gray_dark</item>
+        <item name="readModelText">@string/read_model_day</item>
+        <item name="drawer_hp_color">@color/black_light</item>
+        <item name="textColor_dr_lv">@color/gray_light</item>
+        <item name="recycleViewColor">@color/gray_dark</item>
+        <item name="cardViewColor">@color/dark</item>
+    </style>
+</resources>

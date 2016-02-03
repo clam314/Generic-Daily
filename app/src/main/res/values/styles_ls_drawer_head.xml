@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--drawer-->
+    <style name="lv_drawer_head">
+        <item name="android:background">?attr/toolbarColor</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <!--logon imageView-->
+    <style name="tv_logon">
+        <item name="android:text">@string/logon</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/font_normal</item>
+        <item name="android:textColor">?attr/textColorLight</item>
+    </style>
+
+    <!--collection tv-->
+    <style name="collection_tv">
+        <item name="android:text">@string/my_collection</item>
+        <item name="android:gravity">fill_vertical</item>
+        <item name="android:textSize">@dimen/font_small</item>
+        <item name="android:textColor">?attr/textColorLight</item>
+    </style>
+
+    <!--download tv-->
+    <style name="download_tv">
+        <item name="android:text">@string/download_outline</item>
+        <item name="android:gravity">fill_vertical</item>
+        <item name="android:textSize">@dimen/font_small</item>
+        <item name="android:textColor">?attr/textColorLight</item>
+    </style>
+
+    <!--get back homepage tv-->
+    <style name="get_home_tv">
+        <item name="android:text">@string/homepage</item>
+        <item name="android:gravity">fill</item>
+        <item name="android:textSize">@dimen/font_normal</item>
+        <item name="android:textColor">?attr/toolbarColor</item>
+        <item name="android:background">?attr/drawer_hp_color</item>
+    </style>
+
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.genericdaily.app.views.MyViewPager
+        android:id="@+id/viewpager_home_fg"
+        android:layout_width="fill_parent"
+        android:layout_height="240dp"
+        />
+
+
+
+    <LinearLayout
+        android:id="@+id/ll_dot_group"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="false"
+        android:layout_alignBottom="@+id/viewpager_home_fg">
+    </LinearLayout>
+
+
+</RelativeLayout>

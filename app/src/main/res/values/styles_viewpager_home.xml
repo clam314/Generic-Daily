@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="tv_vp">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/font_large</item>
+    </style>
+
+    <style name="tv_rcv_date">
+        <item name="android:textColor">@color/gray_light</item>
+        <item name="android:textSize">@dimen/font_small</item>
+        <item name="android:text">@string/hot_news</item>
+    </style>
+
+
+    <style name="tv_rcv_item">
+        <item name="android:textColor">?attr/textColorDark</item>
+        <item name="android:textSize">@dimen/font_big</item>
+    </style>
+
+    <style name="tv_rcv_item_multipic">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/font_tiny</item>
+        <item name="android:text">@string/multipic</item>
+        <item name="android:gravity">fill</item>
+        <item name="android:alpha">1</item>
+        <item name="android:visibility">invisible</item>
+    </style>
+
+</resources>

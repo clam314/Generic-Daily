@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">GenericDaily</string>
+
+    <string name="app_name">山寨知乎日报</string>
+    <string name="homepage">首页</string>
+    <string name="read_model_dark">夜间模式</string>
+    <string name="read_model_day">日间模式</string>
+    <string name="setting">设置</string>
+    <string name="notification">通知</string>
+    <string name="logon">请登录</string>
+    <string name="my_collection">我的收藏</string>
+    <string name="download_outline">离线下载</string>
+    <string name="multipic">多图</string>
+    <string name="hot_news">今日热闻</string>
+    <string name="loading">……</string>
+
+    <string name="drawer_open">drawer open</string>
+    <string name="drawer_close">drawer close</string>
 </resources>
