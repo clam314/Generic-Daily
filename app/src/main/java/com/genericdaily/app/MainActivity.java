@@ -1,6 +1,7 @@
 package com.genericdaily.app;
 
 import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
@@ -11,9 +12,12 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.NetworkResponse;
+import com.android.volley.ParseError;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.NetworkImageView;
@@ -21,6 +25,8 @@ import com.android.volley.toolbox.Volley;
 import com.genericdaily.app.models.Constants;
 
 import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -67,7 +73,24 @@ public class MainActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError volleyError) {
 
             }
-        });
+        }){
+
+            @Override
+            protected Response<JSONObject> parseNetworkResponse(
+                    NetworkResponse response) {
+
+                try {
+                    JSONObject jsonObject = new  JSONObject(
+                            new String(response.data, "UTF-8"));
+                    return        Response.success(jsonObject, HttpHeaderParser.parseCacheHeaders(response));
+                } catch (UnsupportedEncodingException e) {
+                    return Response.error(new ParseError(e));
+                } catch (Exception je) {
+                    return Response.error(new ParseError(je));
+                }
+            }
+
+        };
 
         mRequestQueue.add(jsonObjectRequest);
         startAnim(mNetworkImageView);
@@ -80,27 +103,13 @@ public class MainActivity extends AppCompatActivity {
         animatorSet.setDuration(3000);
         animatorSet.setInterpolator(new DecelerateInterpolator());
         animatorSet.play(scaleX).with(scaleY);
-        animatorSet.addListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(Animator animation) {
-
-            }
-
+        animatorSet.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                Intent homeIntent = new Intent(MainActivity.this,HomePageActivity.class);
+                Intent homeIntent = new Intent(MainActivity.this, HomePageActivity.class);
                 startActivity(homeIntent);
+                overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
                 finish();
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animation) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animation) {
-
             }
         });
         animatorSet.start();

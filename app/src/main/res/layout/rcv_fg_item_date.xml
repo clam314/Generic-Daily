@@ -20,14 +20,15 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
         app:cardBackgroundColor="?attr/cardViewColor"
         app:cardElevation="2dp"
         app:cardCornerRadius="5dp"
-        app:contentPadding="10dp"
+        app:contentPadding="8dp"
         >
 
 
@@ -53,10 +54,10 @@
             <TextView
                 android:id="@+id/tv_rcv_item"
                 android:layout_width="240dp"
-                android:layout_height="match_parent"
+                android:layout_height="fill_parent"
                 android:text="111111111111111111111111111111111111"
                 style="@style/tv_rcv_item"
-               />
+                />
 
     </android.support.v7.widget.CardView>
 </LinearLayout>

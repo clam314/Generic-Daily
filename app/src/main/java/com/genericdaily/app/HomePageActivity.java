@@ -8,9 +8,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.android.volley.NetworkResponse;
+import com.android.volley.ParseError;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.genericdaily.app.models.Constants;
@@ -20,6 +23,7 @@ import com.genericdaily.app.views.HomePageDrawerView;
 
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashSet;
 
 public class HomePageActivity extends AppCompatActivity {
@@ -58,7 +62,24 @@ public class HomePageActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError volleyError) {
                 homePageDrawerView.refrashAdapter(myDataBase.loadData("Theme","name"));
             }
-        });
+        }){
+
+            @Override
+            protected Response<JSONObject> parseNetworkResponse(
+                    NetworkResponse response) {
+
+                try {
+                    JSONObject jsonObject = new  JSONObject(
+                            new String(response.data, "UTF-8"));
+                    return        Response.success(jsonObject, HttpHeaderParser.parseCacheHeaders(response));
+                } catch (UnsupportedEncodingException e) {
+                    return Response.error(new ParseError(e));
+                } catch (Exception je) {
+                    return Response.error(new ParseError(je));
+                }
+            }
+
+        };
         requestQueue.add(objectRequest);
     }
 

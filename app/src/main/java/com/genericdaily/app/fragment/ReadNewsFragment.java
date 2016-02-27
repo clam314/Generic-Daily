@@ -11,15 +11,19 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.volley.NetworkResponse;
+import com.android.volley.ParseError;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.NetworkImageView;
@@ -32,6 +36,8 @@ import com.genericdaily.app.utils.StoryExtra;
 import com.genericdaily.app.utils.Utils;
 
 import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created by clam314 on 2016/2/1.
@@ -85,7 +91,7 @@ public class ReadNewsFragment extends Fragment implements NestedScrollView.OnScr
             toolbar.setAlpha((wv_lenght[1]-250)/(wv_hight-250));
         }
         relativeLayout.setTranslationY((400 / wv_hight) * wv_lenght[1] - 400);
-
+      // relativeLayout.setScrollY((int)((400 / wv_hight) * wv_lenght[1] - 400));
     }
 
     @Override
@@ -118,7 +124,24 @@ public class ReadNewsFragment extends Fragment implements NestedScrollView.OnScr
 
     public void questNewsContent(String id,RequestQueue requestQueue , ImageLoader imageLoader ){
         this.imageLoader = imageLoader;
-        JsonObjectRequest objectRequest = new JsonObjectRequest(Constants.Url.NEWS_CONTENT+id,null,this,this);
+        JsonObjectRequest objectRequest = new JsonObjectRequest(Constants.Url.NEWS_CONTENT+id,null,this,this){
+
+            @Override
+            protected Response<JSONObject> parseNetworkResponse(
+                    NetworkResponse response) {
+
+                try {
+                    JSONObject jsonObject = new  JSONObject(
+                            new String(response.data, "UTF-8"));
+                    return        Response.success(jsonObject, HttpHeaderParser.parseCacheHeaders(response));
+                } catch (UnsupportedEncodingException e) {
+                    return Response.error(new ParseError(e));
+                } catch (Exception je) {
+                    return Response.error(new ParseError(je));
+                }
+            }
+
+        };
         requestQueue.add(objectRequest);
     }
 

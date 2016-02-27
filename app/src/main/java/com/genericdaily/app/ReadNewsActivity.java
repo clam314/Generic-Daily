@@ -97,7 +97,6 @@ public class ReadNewsActivity extends AppCompatActivity  {
     private class PageChangelistener extends ViewPager.SimpleOnPageChangeListener{
         @Override
         public void onPageSelected(int position) {
-            Log.i("listsize","listposition: "+position);
             ReadNewsFragment fragment = (ReadNewsFragment) fragmentList.get(position);
            // fragment.nestedScrollView.smoothScrollTo(0, toolbar.getHeight());
             fragment.questNewsContent(list.get(position), requestQueue, imageLoader);

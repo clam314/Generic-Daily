@@ -50,4 +50,6 @@ public class MyViewPager extends ViewPager {
     public void setScrollTimeOffset(int timeOffset){
         scrollTimeOffset = timeOffset;
     }
+
+
 }

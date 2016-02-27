@@ -1,24 +1,36 @@
 package com.genericdaily.app.fragment;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SimpleItemAnimator;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.LruCache;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.Toast;
 
+import com.android.volley.NetworkResponse;
+import com.android.volley.ParseError;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
@@ -30,6 +42,7 @@ import com.genericdaily.app.utils.Utils;
 
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -83,8 +96,9 @@ public class HomePageFragment extends Fragment implements SwipeRefreshLayout.OnR
         homePageRCVAdapter = new HomePageRCVAdapter(getActivity(),informationList,imageLoader);
         linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.addOnScrollListener( new RcycleViewScrollListioner());
+        recyclerView.addOnScrollListener(new RcycleViewScrollListioner());
         recyclerView.setAdapter(homePageRCVAdapter);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         swipeRefreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.sly__fragment);
         swipeRefreshLayout.setColorSchemeResources(R.color.blue);
@@ -108,7 +122,24 @@ public class HomePageFragment extends Fragment implements SwipeRefreshLayout.OnR
             public void onErrorResponse(VolleyError volleyError) {
 
             }
-        });
+        }){
+
+            @Override
+            protected Response<JSONObject> parseNetworkResponse(
+                    NetworkResponse response) {
+
+                try {
+                    JSONObject jsonObject = new  JSONObject(
+                            new String(response.data, "UTF-8"));
+                    return        Response.success(jsonObject, HttpHeaderParser.parseCacheHeaders(response));
+                } catch (UnsupportedEncodingException e) {
+                    return Response.error(new ParseError(e));
+                } catch (Exception je) {
+                    return Response.error(new ParseError(je));
+                }
+            }
+
+        };
 
         requestQueue.add(objectRequest);
     }
@@ -134,7 +165,24 @@ public class HomePageFragment extends Fragment implements SwipeRefreshLayout.OnR
                 Toast.makeText(getContext(),"没有网络",Toast.LENGTH_SHORT).show();
                 swipeRefreshLayout.setRefreshing(false);
             }
-        });
+        }){
+
+            @Override
+            protected Response<JSONObject> parseNetworkResponse(
+                    NetworkResponse response) {
+
+                try {
+                    JSONObject jsonObject = new  JSONObject(
+                            new String(response.data, "UTF-8"));
+                    return        Response.success(jsonObject, HttpHeaderParser.parseCacheHeaders(response));
+                } catch (UnsupportedEncodingException e) {
+                    return Response.error(new ParseError(e));
+                } catch (Exception je) {
+                    return Response.error(new ParseError(je));
+                }
+            }
+
+        };
 
         requestQueue.add(objectRequest);
     }
@@ -177,7 +225,24 @@ public class HomePageFragment extends Fragment implements SwipeRefreshLayout.OnR
                         Toast.makeText(getContext(),"没有网络",Toast.LENGTH_SHORT).show();
                         loading = false;
                     }
-                });
+                }){
+
+                    @Override
+                    protected Response<JSONObject> parseNetworkResponse(
+                            NetworkResponse response) {
+
+                        try {
+                            JSONObject jsonObject = new  JSONObject(
+                                    new String(response.data, "UTF-8"));
+                            return        Response.success(jsonObject, HttpHeaderParser.parseCacheHeaders(response));
+                        } catch (UnsupportedEncodingException e) {
+                            return Response.error(new ParseError(e));
+                        } catch (Exception je) {
+                            return Response.error(new ParseError(je));
+                        }
+                    }
+
+                };
 
                 requestQueue.add(objectRequest);
             }
