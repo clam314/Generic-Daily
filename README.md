@@ -15,8 +15,6 @@
 备注：1.使用了一个第三方库——volley
 
 #####效果图:
-![]( https://raw.githubusercontent.com/clam314/Image/master/GenericDailyImage/GenericDaily1.png)![]( https://raw.githubusercontent.com/clam314/Image/master/GenericDailyImage/GenericDaily2.png)<br/>
-![]( https://raw.githubusercontent.com/clam314/Image/master/GenericDailyImage/GenericDaily3.png)![]( https://raw.githubusercontent.com/clam314/Image/master/GenericDailyImage/GenericDaily4.png)<br/>
-![]( https://raw.githubusercontent.com/clam314/Image/master/GenericDailyImage/GenericDaily5.png)![]( https://raw.githubusercontent.com/clam314/Image/master/GenericDailyImage/GenericDaily6.png)<br/>
-![]( https://raw.githubusercontent.com/clam314/Image/master/GenericDailyImage/GenericDaily7.png)![]( https://raw.githubusercontent.com/clam314/Image/master/GenericDailyImage/GenericDaily8.png)<br/>
+![]( https://raw.githubusercontent.com/clam314/Image/master/GenericDailyImage/GenericDaily9.gif)<br/>
+![]( https://raw.githubusercontent.com/clam314/Image/master/GenericDailyImage/GenericDaily10.gif)<br/>
 
